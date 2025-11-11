@@ -11,14 +11,14 @@ import { Check, X, UserPlus, Users } from "lucide-react"
 export function FriendRequests() {
     const [open, setOpen] = useState(false)
     const [incomingRequests, setIncomingRequests] = useState([
-        { id: "1", name: "DigitalDragon", avatar: "/placeholder-user.jpg", mutualFriends: 3 },
-        { id: "2", name: "TechTitan", avatar: "/placeholder-user.jpg", mutualFriends: 1 },
-        { id: "3", name: "CyberSamurai", avatar: "/placeholder-user.jpg", mutualFriends: 0 },
+        { id: "1", name: "Nosa Edegbe", avatar: "/placeholder-user.jpg", mutualFriends: 3 },
+        { id: "2", name: "Hannah Wright", avatar: "/placeholder-user.jpg", mutualFriends: 1 },
+        { id: "3", name: "Clinton Uzoma", avatar: "/placeholder-user.jpg", mutualFriends: 0 },
     ])
 
     const [outgoingRequests, setOutgoingRequests] = useState([
-        { id: "4", name: "NeonNinja", avatar: "/placeholder-user.jpg", mutualFriends: 2 },
-        { id: "5", name: "PixelPirate", avatar: "/placeholder-user.jpg", mutualFriends: 5 },
+        { id: "4", name: "Stephen King", avatar: "/placeholder-user.jpg", mutualFriends: 2 },
+        { id: "5", name: "Phoebe Ayomiwa", avatar: "/placeholder-user.jpg", mutualFriends: 5 },
     ])
 
     const [searchInput, setSearchInput] = useState("")
@@ -49,13 +49,13 @@ export function FriendRequests() {
                             {incomingRequests.length}
                         </Badge>
                     )}
-                    <span className="sr-only">Friend Requests</span>
+                    <span className="sr-only">Connect Requests</span>
                 </Button>
             </DialogTrigger>
             <DialogContent className="bg-zinc-900 border border-zinc-800 text-white sm:max-w-md">
                 <DialogHeader>
                     <DialogTitle className="text-xl bg-gradient-to-r from-purple-500 to-cyan-500 bg-clip-text text-transparent">
-                        Friend Requests
+                        Connect Requests
                     </DialogTitle>
                 </DialogHeader>
 
@@ -74,7 +74,7 @@ export function FriendRequests() {
                             )}
                         </TabsTrigger>
                         <TabsTrigger value="add" className="data-[state=active]:bg-zinc-700">
-                            Add Friend
+                            Add Mentor
                         </TabsTrigger>
                     </TabsList>
 
@@ -154,7 +154,7 @@ export function FriendRequests() {
                                     <Button
                                         size="sm"
                                         variant="outline"
-                                        className="border-zinc-700 hover:bg-zinc-700 text-xs"
+                                        className="border-zinc-700 bg-red-500 hover:bg-zinc-700 text-xs"
                                         onClick={() => cancelRequest(request.id)}
                                     >
                                         Cancel

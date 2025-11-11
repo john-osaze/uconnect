@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import "../../styles/custom.css";
 import JobSearchBar from '@/pages/jobs/components/JobSearchBar';
 import ContextualHeader from '@/components/ContextualHeader';
 import BottomTabNavigation from '@/components/BottomTabNavigation';
 
 const MentorDiscovery = () => {
+    const [modalOpen, setModalOpen] = useState(false);
+    const [selectedMentor, setSelectedMentor] = useState(null);
+    const [message, setMessage] = useState('');
+
     const mentors = [
         {
             id: 1,
@@ -47,7 +51,7 @@ const MentorDiscovery = () => {
             skills: [
                 { name: "Data Science", color: "bg-teal-100 text-teal-800" },
                 { name: "Python", color: "bg-cyan-100 text-cyan-800" },
-                { name: "Machine Learning", color: "bg-lime-100 text-lime-800" }
+                { name: "ML", color: "bg-lime-100 text-lime-800" }
             ]
         },
         {
@@ -107,8 +111,39 @@ const MentorDiscovery = () => {
         setFilters(newFilters);
     };
 
-    const handleRequestMentorship = (mentorName) => {
-        console.log(`Request mentorship from ${mentorName}`);
+    useEffect(() => {
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                setModalOpen(false);
+            }
+        };
+
+        if (modalOpen) {
+            document.addEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'hidden';
+        }
+
+        return () => {
+            document.removeEventListener('keydown', handleEscape);
+            document.body.style.overflow = 'unset';
+        };
+    }, [modalOpen]);
+
+    const handleRequestMentorship = (mentor) => {
+        setSelectedMentor(mentor);
+        setMessage(`Hi ${mentor.name.split(' ')[0]}, I'm interested in your expertise in...`);
+        setModalOpen(true);
+    };
+
+    const handleSubmit = () => {
+        if (!message.trim()) return;
+
+        console.log('Sending mentorship request:', {
+            mentor: selectedMentor,
+            message: message
+        });
+        setModalOpen(false);
+        setMessage('');
     };
 
     return (
@@ -121,8 +156,7 @@ const MentorDiscovery = () => {
             />
 
             {/* Main Content */}
-            <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-24">
-                {/* Page Header */}
+            <main className="container mx-auto px-4 sm:px-6 lg:px-8 py-8 pb-16">
                 <div className="mb-8">
                     <h2 className="text-3xl font-bold text-gray-900 mb-2">Find Your Mentor</h2>
                     <p className="text-lg text-gray-600">Connect with experienced alumni who can guide you.</p>
@@ -134,7 +168,6 @@ const MentorDiscovery = () => {
                     activeFiltersCount={getActiveFiltersCount()}
                 />
 
-                {/* Mentors Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
                     {mentors.map((mentor) => (
                         <div
@@ -142,7 +175,6 @@ const MentorDiscovery = () => {
                             className="bg-white rounded-xl shadow-md overflow-hidden transform hover:scale-105 transition duration-300"
                         >
                             <div className="p-6">
-                                {/* Mentor Profile */}
                                 <div className="flex items-center mb-4">
                                     <img
                                         alt={`Profile picture of ${mentor.name}`}
@@ -155,23 +187,20 @@ const MentorDiscovery = () => {
                                     </div>
                                 </div>
 
-                                {/* Skills Tags */}
                                 <div className="mb-4">
                                     {mentor.skills.map((skill, index) => (
                                         <span
                                             key={index}
-                                            className={`inline-block ${skill.color} text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full ${index === mentor.skills.length - 1 ? '' : 'mb-1'
-                                                }`}
+                                            className={`inline-block ${skill.color} text-xs font-semibold mr-2 px-2.5 py-0.5 rounded-full mb-1`}
                                         >
                                             {skill.name}
                                         </span>
                                     ))}
                                 </div>
 
-                                {/* Request Button */}
                                 <button
-                                    onClick={() => handleRequestMentorship(mentor.name)}
-                                    className="w-full bg-primary text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"
+                                    onClick={() => handleRequestMentorship(mentor)}
+                                    className="w-full bg-black text-white font-semibold py-2 px-4 rounded-lg hover:bg-blue-700 transition flex items-center justify-center"
                                 >
                                     <span className="material-icons mr-2 text-sm">person_add</span>
                                     Request Mentorship
@@ -181,6 +210,66 @@ const MentorDiscovery = () => {
                     ))}
                 </div>
             </main>
+
+            {modalOpen && (
+                <div
+                    className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50 transition-opacity duration-300 animate-fadeIn"
+                    onClick={() => setModalOpen(false)}
+                >
+                    <div
+                        className="bg-white rounded-xl shadow-xl w-full max-w-lg mx-4 p-6 sm:p-8 transform transition-all duration-300 animate-scaleIn"
+                        onClick={(e) => e.stopPropagation()}
+                    >
+                        <div className="flex justify-between items-start mb-6">
+                            <div>
+                                <h2 className="text-2xl font-bold text-gray-900">Request Mentorship</h2>
+                                <p className="text-gray-600 mt-1">Send a message to start the conversation.</p>
+                            </div>
+                            <button
+                                onClick={() => setModalOpen(false)}
+                                className="text-gray-400 hover:text-gray-600 transition"
+                            >
+                                <span className="material-icons">close</span>
+                            </button>
+                        </div>
+
+                        <div className="space-y-6">
+                            <div>
+                                <label
+                                    className="block text-sm font-medium text-gray-700 mb-1"
+                                    htmlFor="message"
+                                >
+                                    Your Message
+                                </label>
+                                <textarea
+                                    className="block w-full rounded-md border border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm px-3 py-2 focus:outline-none focus:ring-2"
+                                    id="message"
+                                    name="message"
+                                    placeholder="Hi [Mentor's Name], I'm interested in your expertise in..."
+                                    rows="6"
+                                    value={message}
+                                    onChange={(e) => setMessage(e.target.value)}
+                                />
+                            </div>
+
+                            <div className="flex flex-col sm:flex-row sm:justify-end sm:space-x-4 space-y-2 sm:space-y-0">
+                                <button
+                                    onClick={() => setModalOpen(false)}
+                                    className="w-full sm:w-auto justify-center flex items-center rounded-lg border border-gray-300 bg-white px-4 py-2 text-base font-medium text-gray-700 shadow-sm hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                                >
+                                    Cancel
+                                </button>
+                                <button
+                                    onClick={handleSubmit}
+                                    className="w-full sm:w-auto flex items-center justify-center rounded-lg border border-transparent bg-black px-4 py-2 text-base font-medium text-white shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition"
+                                >
+                                    Send Request
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             <BottomTabNavigation userRole="student" />
         </div>

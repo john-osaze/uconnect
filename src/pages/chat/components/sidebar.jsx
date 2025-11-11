@@ -21,7 +21,7 @@ export function Sidebar() {
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent side="right" className="bg-zinc-900 text-white border-zinc-800">
-                            <p>NeonConnect</p>
+                            <p>UConnect</p>
                         </TooltipContent>
                     </Tooltip>
                     <div className="w-10 h-0.5 bg-zinc-800 my-2"></div>
@@ -80,11 +80,11 @@ export function Sidebar() {
                                 className="h-12 w-12 rounded-full bg-zinc-800 hover:bg-cyan-600 text-zinc-400 hover:text-white transition-all duration-300"
                             >
                                 <PlusCircle className="h-5 w-5" />
-                                <span className="sr-only">Add Server</span>
+                                <span className="sr-only">Add Mentors</span>
                             </Button>
                         </TooltipTrigger>
                         <TooltipContent side="right" className="bg-zinc-900 text-white border-zinc-800">
-                            <p>Add Server (Coming Soon)</p>
+                            <p>Add Mentors (Coming Soon)</p>
                         </TooltipContent>
                     </Tooltip>
                 </div>

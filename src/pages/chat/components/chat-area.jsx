@@ -8,16 +8,16 @@ import { Smile, Paperclip, Gift, Send, Phone, Video, Info } from "lucide-react"
 
 export function ChatArea() {
     const [messages, setMessages] = useState([
-        { id: "1", sender: "friend", content: "Hey! Are you up for some gaming tonight?", timestamp: "Today at 2:30 PM" },
-        { id: "2", sender: "user", content: "What do you want to play?", timestamp: "Today at 2:32 PM" },
+        { id: "1", sender: "mentor", content: "Hey! Alex, how are you doing?", timestamp: "Today at 2:30 PM" },
+        { id: "2", sender: "user", content: "I'm doing fine sir", timestamp: "Today at 2:32 PM" },
         {
             id: "3",
-            sender: "friend",
-            content: "I was thinking we could try that new co-op game that just came out. The graphics look amazing!",
+            sender: "mentor",
+            content: "I'm glad to hear that! It'll be my pleasure mentoring you. Let's schedule our first session.",
             timestamp: "Today at 2:33 PM",
         },
         { id: "4", sender: "user", content: "Sounds good to me! What time works for you?", timestamp: "Today at 2:35 PM" },
-        { id: "5", sender: "friend", content: "How about 8 PM? I'll send you an invite.", timestamp: "Today at 2:36 PM" },
+        { id: "5", sender: "mentor", content: "How about 8 PM? I'll send you an invite.", timestamp: "Today at 2:36 PM" },
     ])
 
     const [newMessage, setNewMessage] = useState("")
@@ -42,12 +42,12 @@ export function ChatArea() {
             <div className="flex items-center justify-between p-4 border-b border-zinc-800 bg-zinc-900/50 backdrop-blur-sm">
                 <div className="flex items-center gap-3">
                     <Avatar className="h-9 w-9 border border-zinc-800">
-                        <AvatarImage src="/placeholder-user.jpg" alt="CyberNinja" />
-                        <AvatarFallback className="bg-zinc-800 text-purple-400">CN</AvatarFallback>
+                        <AvatarImage src="/placeholder-user.jpg" alt="Dr James Gordon" />
+                        <AvatarFallback className="bg-zinc-800 text-purple-400">JG</AvatarFallback>
                     </Avatar>
                     <div>
-                        <h2 className="text-sm font-medium">CyberNinja</h2>
-                        <p className="text-xs text-zinc-400">Online - Playing Cyberpunk 2077</p>
+                        <h2 className="text-sm font-medium">Dr. James Gordon</h2>
+                        <p className="text-xs text-zinc-400">Indisposed</p>
                     </div>
                 </div>
                 <div className="flex items-center gap-1">
@@ -72,8 +72,8 @@ export function ChatArea() {
                         <div className={`flex gap-3 max-w-[80%] ${message.sender === "user" ? "flex-row-reverse" : ""}`}>
                             {message.sender === "friend" && (
                                 <Avatar className="h-9 w-9 mt-1 border border-zinc-800">
-                                    <AvatarImage src="/placeholder-user.jpg" alt="CyberNinja" />
-                                    <AvatarFallback className="bg-zinc-800 text-purple-400">CN</AvatarFallback>
+                                    <AvatarImage src="/placeholder-user.jpg" alt="Dr James Gordon" />
+                                    <AvatarFallback className="bg-zinc-800 text-purple-400">JG</AvatarFallback>
                                 </Avatar>
                             )}
                             <div>
@@ -116,7 +116,7 @@ export function ChatArea() {
                         <Input
                             value={newMessage}
                             onChange={(e) => setNewMessage(e.target.value)}
-                            placeholder="Message @CyberNinja"
+                            placeholder="Message @jimmygordon"
                             className="bg-zinc-800 border-zinc-700 focus-visible:ring-purple-500 pr-10"
                         />
                         <Button

@@ -28,7 +28,7 @@ export function UserNav() {
                     <Button variant="ghost" className="relative h-10 w-10 rounded-full group">
                         <Avatar className="h-10 w-10 border-2 border-zinc-800 group-hover:border-purple-500 transition-all duration-300">
                             <AvatarImage src="/placeholder-user.jpg" alt="@username" />
-                            <AvatarFallback className="bg-zinc-800 text-purple-400">GR</AvatarFallback>
+                            <AvatarFallback className="bg-zinc-800 text-purple-400">AJ</AvatarFallback>
                         </Avatar>
                         <span className="absolute bottom-0 right-0 h-3 w-3 rounded-full bg-green-500 border-2 border-zinc-900"></span>
                     </Button>
@@ -36,8 +36,8 @@ export function UserNav() {
                 <DropdownMenuContent className="w-56 bg-zinc-900 border border-zinc-800 text-white" align="end" forceMount>
                     <DropdownMenuLabel>
                         <div className="flex flex-col space-y-1">
-                            <p className="text-sm font-medium leading-none">GamerRex</p>
-                            <p className="text-xs leading-none text-zinc-400">gamer.rex@example.com</p>
+                            <p className="text-sm font-medium leading-none">Alex Johnson</p>
+                            <p className="text-xs leading-none text-zinc-400">alexjohnson@email.com</p>
                         </div>
                     </DropdownMenuLabel>
                     <DropdownMenuSeparator className="bg-zinc-800" />
@@ -63,14 +63,14 @@ export function UserNav() {
                                         <div className="relative">
                                             <Avatar className="h-24 w-24 border-4 border-purple-500/50">
                                                 <AvatarImage src="/placeholder-user.jpg" alt="@username" />
-                                                <AvatarFallback className="bg-zinc-800 text-purple-400 text-2xl">GR</AvatarFallback>
+                                                <AvatarFallback className="bg-zinc-800 text-purple-400 text-2xl">AJ</AvatarFallback>
                                             </Avatar>
                                             <Button
                                                 size="icon"
                                                 className="absolute bottom-0 right-0 h-8 w-8 rounded-full bg-zinc-800 hover:bg-purple-600"
                                             >
                                                 <ImageIcon className="h-4 w-4" />
-                                                <span className="sr-only">Change avatar</span>
+                                                <span className="sr-only">Change profile pic</span>
                                             </Button>
                                         </div>
                                         <div className="w-full h-24 rounded-md bg-gradient-to-r from-purple-900/50 to-cyan-900/50 relative overflow-hidden">

@@ -92,10 +92,10 @@ export function FriendProfile({ friend, open, onOpenChange }) {
                         {isFriend ? (
                             <Button
                                 variant="outline"
-                                className="border-zinc-700 hover:bg-zinc-800 hover:text-white"
+                                className="border-zinc-700 bg-red-500 hover:bg-zinc-800 hover:text-white"
                                 onClick={() => setIsFriend(false)}
                             >
-                                <UserMinus className="h-4 w-4 mr-2 text-red-400" />
+                                <UserMinus className="h-4 w-4 mr-2 text-white" />
                                 Remove Friend
                             </Button>
                         ) : (
@@ -108,8 +108,8 @@ export function FriendProfile({ friend, open, onOpenChange }) {
                                 Add Friend
                             </Button>
                         )}
-                        <Button variant="outline" className="border-zinc-700 hover:bg-zinc-800 hover:text-white">
-                            <Gift className="h-4 w-4 mr-2 text-purple-400" />
+                        <Button variant="outline" className="bg-green-500 border-zinc-700 hover:bg-zinc-800 hover:text-white">
+                            <Gift className="h-4 w-4 mr-2 text-white" />
                             Send Gift
                         </Button>
                         <Button
@@ -131,7 +131,7 @@ export function FriendProfile({ friend, open, onOpenChange }) {
                                 About
                             </TabsTrigger>
                             <TabsTrigger value="gaming" className="data-[state=active]:bg-zinc-700">
-                                Gaming
+                                Events
                             </TabsTrigger>
                             <TabsTrigger value="activity" className="data-[state=active]:bg-zinc-700">
                                 Activity
@@ -167,7 +167,7 @@ export function FriendProfile({ friend, open, onOpenChange }) {
 
                         <TabsContent value="gaming" className="mt-4">
                             <div className="bg-zinc-800 rounded-lg p-4">
-                                <h3 className="text-sm font-semibold uppercase text-zinc-400 mb-2">Favorite Games</h3>
+                                <h3 className="text-sm font-semibold uppercase text-zinc-400 mb-2">Bookmarked Events</h3>
                                 <div className="flex flex-wrap gap-2 mb-4">
                                     {friend.favoriteGames?.map((game, index) => (
                                         <Badge
@@ -177,12 +177,12 @@ export function FriendProfile({ friend, open, onOpenChange }) {
                                             {game}
                                         </Badge>
                                     ))}
-                                    {!friend.favoriteGames?.length && <p className="text-sm text-zinc-500">No favorite games added.</p>}
+                                    {!friend.favoriteGames?.length && <p className="text-sm text-zinc-500">No favorite events added.</p>}
                                 </div>
 
                                 <Separator className="my-4 bg-zinc-700" />
 
-                                <h3 className="text-sm font-semibold uppercase text-zinc-400 mb-2">Currently Playing</h3>
+                                <h3 className="text-sm font-semibold uppercase text-zinc-400 mb-2">Currently Attending</h3>
                                 {friend.game ? (
                                     <div className="flex items-center gap-3 bg-zinc-900 p-3 rounded-lg">
                                         <div className="h-12 w-12 bg-zinc-800 rounded-md flex items-center justify-center">
@@ -197,7 +197,7 @@ export function FriendProfile({ friend, open, onOpenChange }) {
                                         </Button>
                                     </div>
                                 ) : (
-                                    <p className="text-sm text-zinc-500">Not playing anything right now.</p>
+                                    <p className="text-sm text-zinc-500">Not attending any events right now.</p>
                                 )}
                             </div>
                         </TabsContent>

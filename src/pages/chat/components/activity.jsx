@@ -5,11 +5,11 @@ import { Button } from "@/components/ui/button"
 import { ScrollArea } from "@/components/ui/scroll-area"
 import { Gamepad2, Users, Trophy, Clock, ArrowRight } from "lucide-react"
 
-export function GameActivity() {
+export function Activity() {
     const activeGames = [
         {
             id: "1",
-            game: "Cyberpunk 2077",
+            game: "Sasha Charles",
             image: "/placeholder.svg",
             players: [
                 { id: "1", name: "CyberNinja", avatar: "/placeholder-user.jpg" },
@@ -19,7 +19,7 @@ export function GameActivity() {
         },
         {
             id: "2",
-            game: "Elden Ring",
+            game: "Ryan Lee",
             image: "/placeholder.svg",
             players: [
                 { id: "4", name: "VirtualPhantom", avatar: "/placeholder-user.jpg" },
@@ -32,17 +32,17 @@ export function GameActivity() {
 
     const recentAchievements = [
         {
-            user: "CyberNinja",
+            user: "Dr. James Gordon",
             avatar: "/placeholder-user.jpg",
-            game: "Cyberpunk 2077",
-            achievement: "Night City Legend",
+            game: "Award",
+            achievement: "Best Mentor of the Year",
             time: "3 hours ago",
         },
         {
-            user: "PixelWarrior",
+            user: "Patricia Brown",
             avatar: "/placeholder-user.jpg",
-            game: "Elden Ring",
-            achievement: "Lord of Frenzied Flame",
+            game: "Elected",
+            achievement: "Student Council President",
             time: "Yesterday",
         },
     ]
@@ -52,7 +52,7 @@ export function GameActivity() {
             <div className="p-4 border-b border-zinc-800">
                 <h2 className="text-sm font-semibold text-zinc-300 flex items-center">
                     <Gamepad2 className="h-4 w-4 mr-2 text-purple-400" />
-                    GAME ACTIVITY
+                    YOUR ACTIVITY
                 </h2>
             </div>
 
@@ -61,7 +61,7 @@ export function GameActivity() {
                     <div className="mb-6">
                         <h3 className="text-xs font-semibold text-zinc-400 mb-3 flex items-center">
                             <Users className="h-3 w-3 mr-1" />
-                            FRIENDS PLAYING
+                            PENDING REQUESTS
                         </h3>
 
                         {activeGames.length > 0 ? (
@@ -102,7 +102,7 @@ export function GameActivity() {
                                                     variant="ghost"
                                                     className="h-7 px-2 text-xs text-purple-400 hover:text-purple-300 hover:bg-zinc-700"
                                                 >
-                                                    Join
+                                                    Accept
                                                     <ArrowRight className="h-3 w-3 ml-1" />
                                                 </Button>
                                             </div>
