@@ -16,17 +16,17 @@ const LandingPage = () => {
 				</div>
 
 				<div className="hidden md:flex items-center space-x-12">
-					<a href="#" className="hover:opacity-80 transition-opacity">Servers</a>
-					<a href="#" className="hover:opacity-80 transition-opacity">Apps</a>
+					<a href="#" className="hover:opacity-80 transition-opacity">About</a>
+					<a href="#" className="hover:opacity-80 transition-opacity">Features</a>
 					<a href="#" className="hover:opacity-80 transition-opacity">Sponsors</a>
 					<a href="#" className="hover:opacity-80 transition-opacity">Resources</a>
 				</div>
 
-				<Link to="/auth">
+				<a href="https://play.google.com/store/apps?hl=en&gl=US" target="_blank" rel="noopener noreferrer">
 					<button className="bg-white/20 hover:bg-white/30 px-6 py-2 rounded-full backdrop-blur-sm transition-all duration-300 border cursor-pointer border-white/30">
 						Get the app
 					</button>
-				</Link>
+				</a>
 			</nav>
 
 			{/* Main Content */}
@@ -89,16 +89,14 @@ const LandingPage = () => {
 						<span className="text-white/90"> on a whole new level</span>
 					</h1>
 
-					<p className="text-sm md:text-xl text-white/80 mb-8 max-w-2xl mx-auto leading-relaxed pb-10 md:pb-0">
-						Your home feed should be filled with what matters to you most, not what
-						a corporation thinks you should see. Radically different social media,
-						back in the hands of the people.
+					<p className="text-sm md:text-xl text-white/80 mb-8 max-w-[36rem] mx-auto leading-relaxed pb-10 md:pb-0">
+						Stay connected to what truly matters. Build mentorships, share opportunities, and shape the future of your alma mater through real connections.
 					</p>
 
 					<div className="flex flex-col mt-[-10px] md:mt-0 sm:flex-row items-center justify-center gap-4">
 						<Link to="/auth">
 							<button className="bg-red-500 hover:bg-red-600 px-8 py-3 cursor-pointer rounded-full font-semibold transition-all duration-300 transform hover:scale-105 shadow-lg">
-								Get the app
+								Sign in to continue
 							</button>
 						</Link>
 						<Link to="/auth">
